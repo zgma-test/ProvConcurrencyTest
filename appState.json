@@ -1,0 +1,89 @@
+{
+  "EDITOR_STATE": {
+    "allProjectFiles": {
+      "772c129c-73cd-4adf-9ae7-d80a35feebc0": {
+        "id": "772c129c-73cd-4adf-9ae7-d80a35feebc0",
+        "parent": null,
+        "name": "ProvConcurrencyTest",
+        "type": "DIRECTORY",
+        "isDirectory": true,
+        "children": [
+          "9e5dd146-59da-462a-8e0c-423732a11e93"
+        ],
+        "isRemovable": false,
+        "filePath": "ProvConcurrencyTest"
+      },
+      "9e5dd146-59da-462a-8e0c-423732a11e93": {
+        "id": "9e5dd146-59da-462a-8e0c-423732a11e93",
+        "parent": "772c129c-73cd-4adf-9ae7-d80a35feebc0",
+        "name": "lambda.js",
+        "type": "JS_LAMBDA",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "ProvConcurrencyTest/lambda.js",
+        "config": {
+          "runtime": "nodejs10.x",
+          "handler": "handler",
+          "timeout": 60,
+          "memory": 128,
+          "layers": []
+        },
+        "triggers": []
+      }
+    },
+    "rootNode": "772c129c-73cd-4adf-9ae7-d80a35feebc0",
+    "openFiles": [
+      "9e5dd146-59da-462a-8e0c-423732a11e93"
+    ],
+    "currentFileId": "9e5dd146-59da-462a-8e0c-423732a11e93",
+    "resources": {},
+    "customTemplate": {
+      "dialect": "CloudFormation",
+      "definitions": {
+        "Resources": {
+          "ProvConcurrencyTestlambdaVersion": {
+            "Type": "AWS::Lambda::Version",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "ProvConcurrencyTestlambda"
+              },
+              "ProvisionedConcurrencyConfig": {
+                "ProvisionedConcurrentExecutions": 2
+              }
+            }
+          }
+        }
+      }
+    },
+    "envVariables": [
+      {
+        "lambdaId": "all",
+        "varKey": "SIGMA_AWS_ACC_ID",
+        "varValue": null,
+        "shouldPersist": false,
+        "displayOnly": false,
+        "editable": false
+      }
+    ],
+    "packageJSON": {
+      "dependencies": {}
+    }
+  },
+  "PROJECT_META": {
+    "projectName": "ProvConcurrencyTest",
+    "projectDescription": "",
+    "projectVersion": "1.0.0",
+    "projectRegion": "us-east-1",
+    "platform": "AWS",
+    "platformRegions": {},
+    "lastSave": 1576747030285
+  },
+  "VCS_STATE": {
+    "provider": "GitHub",
+    "repo": {
+      "name": "ProvConcurrencyTest",
+      "url": "https://github.com/zgma-test/ProvConcurrencyTest"
+    }
+  }
+}
