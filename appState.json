@@ -25,11 +25,18 @@
         "config": {
           "runtime": "nodejs10.x",
           "handler": "handler",
-          "timeout": 60,
+          "timeout": 30,
           "memory": 128,
           "layers": []
         },
-        "triggers": []
+        "triggers": [
+          {
+            "resourceName": "sqstestQueuefifo",
+            "config": {
+              "BatchSize": "10"
+            }
+          }
+        ]
       }
     },
     "rootNode": "772c129c-73cd-4adf-9ae7-d80a35feebc0",
@@ -37,23 +44,33 @@
       "9e5dd146-59da-462a-8e0c-423732a11e93"
     ],
     "currentFileId": "9e5dd146-59da-462a-8e0c-423732a11e93",
-    "resources": {},
+    "resources": {
+      "sqstestQueuefifo": {
+        "name": "sqstestQueuefifo",
+        "type": "SQS",
+        "config": {
+          "mode": 1,
+          "existing": true,
+          "name": "test-queue.fifo",
+          "url": "https://sqs.us-east-1.amazonaws.com/318300609668/test-queue.fifo",
+          "selectedRegion": "us-east-1",
+          "deliveryDelay": "0",
+          "deliveryDelayUnit": "seconds",
+          "queueType": "fifoQueue",
+          "defaultVisibilityTimeout": "30",
+          "defaultVisibilityTimeoutUnit": "seconds",
+          "messageRetentionPeriod": "345600",
+          "messageRetentionPeriodUnit": "seconds",
+          "maximumMessageSize": 256,
+          "receiveMessageWaitTime": "0",
+          "queueARN": "arn:aws:sqs:us-east-1:318300609668:test-queue.fifo"
+        }
+      }
+    },
     "customTemplate": {
       "dialect": "CloudFormation",
       "definitions": {
-        "Resources": {
-          "ProvConcurrencyTestlambdaVersion": {
-            "Type": "AWS::Lambda::Version",
-            "Properties": {
-              "FunctionName": {
-                "Ref": "ProvConcurrencyTestlambda"
-              },
-              "ProvisionedConcurrencyConfig": {
-                "ProvisionedConcurrentExecutions": 2
-              }
-            }
-          }
-        }
+        "Resources": {}
       }
     },
     "envVariables": [
@@ -77,7 +94,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1576747030285
+    "lastSave": 1576749208284
   },
   "VCS_STATE": {
     "provider": "GitHub",
